@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager_trosobo/app/data/models/task_model.dart';
 
 class AddTaskController extends GetxController {
   @override
@@ -34,5 +35,14 @@ class AddTaskController extends GetxController {
     if (pickedDate != null && pickedDate != selectedDate.value) {
       selectedDate.value = pickedDate;
     }
+  }
+
+  addTask(String title, String description, DateTime dueDate) {
+    TaskModel newTask = TaskModel(
+      title: title,
+      description: description,
+      dueDate: dueDate,
+      status: JobStatus.todo,
+    );
   }
 }
