@@ -46,11 +46,12 @@ class TaskService {
   }
 
   // DELETE Task
-  Future<void> deleteTask(String id) async {
+  Future<bool> deleteTask(int id) async {
     try {
-      await _dio.delete('/tasks/$id');
+      final response = await _dio.delete('/tasks/$id');
+      return response.statusCode == 200;
     } catch (e) {
-      rethrow;
+      throw Exception("Gagal menghapus data di server: $e");
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager_trosobo/app/data/models/task_model.dart';
 import 'package:task_manager_trosobo/app/data/services/task_services.dart';
@@ -60,7 +61,30 @@ class HomeController extends GetxController {
   }
 
   // Delete
-  void deleteTask(int index) {
-    tasks.removeAt(index);
+  void deleteTask(int index) async {
+    final taskId = tasks[index].id;
+
+    if (taskId == null) {
+      Get.snackbar("Error", "ID Tugas tidak ditemukan");
+      return;
+    }
+
+    try {
+      bool success = await _taskService.deleteTask(taskId);
+
+      if (success) {
+        tasks.removeAt(index);
+
+        Get.snackbar(
+          "Sukses",
+          "Tugas berhasil dihapus",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.black87,
+          colorText: Colors.white,
+        );
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Gagal menghapus tugas dari server");
+    }
   }
 }
