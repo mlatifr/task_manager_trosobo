@@ -29,6 +29,7 @@ class TaskService {
       if (response.statusCode == 201) {
         return TaskModel.fromJson(response.data);
       }
+      print(response.data);
       return null;
     } catch (e) {
       rethrow;

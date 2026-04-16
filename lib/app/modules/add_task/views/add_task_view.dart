@@ -46,17 +46,11 @@ class AddTaskView extends GetView<AddTaskController> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // if (controller.textController.text.isNotEmpty) {
-                  //   // Panggil fungsi addTask dari controller
-                  //   controller.addTask(controller.textController.text);
-                  //   // Kembali ke halaman sebelumnya
-                  //   Get.back();
-                  //   // Opsional: Tampilkan snackbar
-                  //   Get.snackbar('Sukses', 'Tugas berhasil ditambahkan');
-                  // } else {
-                  //   Get.snackbar('Error', 'Judul tidak boleh kosong',
-                  //       backgroundColor: Colors.red, colorText: Colors.white);
-                  // }
+                  controller.addTask(
+                    controller.tittleController.text,
+                    controller.descriptionController.text,
+                    controller.selectedDate.value,
+                  );
                 },
                 child: const Text('Simpan Tugas'),
               ),
