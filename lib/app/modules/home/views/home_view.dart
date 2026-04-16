@@ -40,6 +40,8 @@ class HomeView extends GetView<HomeController> {
             itemBuilder: (context, index) {
               final task = controller.tasks[index];
               return ListTile(
+                onTap: () => Get.toNamed(Routes.ADD_TASK, arguments: task)
+                    ?.then((_) => controller.fetchAllTasks()),
                 title: Text(
                   task.title,
                   style: TextStyle(
@@ -64,7 +66,8 @@ class HomeView extends GetView<HomeController> {
       }),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => Get.toNamed(Routes.ADD_TASK),
+        onPressed: () => Get.toNamed(Routes.ADD_TASK)
+            ?.then((_) => controller.fetchAllTasks()),
       ),
     );
   }

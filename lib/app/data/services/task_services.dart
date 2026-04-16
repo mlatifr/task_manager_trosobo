@@ -37,9 +37,10 @@ class TaskService {
   }
 
   // PUT Update Task
-  Future<void> updateTask(String id, TaskModel task) async {
+  Future<bool> updateTask(int id, TaskModel task) async {
     try {
       await _dio.put('/tasks/$id', data: task.toJson());
+      return true;
     } catch (e) {
       rethrow;
     }
