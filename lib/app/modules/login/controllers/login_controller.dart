@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager_trosobo/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
   // Global key for the form validation
@@ -35,6 +36,7 @@ class LoginController extends GetxController {
     if (loginFormKey.currentState!.validate()) {
       // Form is valid, proceed with login
       Get.snackbar("Success", "Logging in as ${emailController.text}");
+      Get.toNamed(Routes.HOME);
     }
   }
 }

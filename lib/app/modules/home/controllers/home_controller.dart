@@ -22,7 +22,13 @@ class HomeController extends GetxController {
 
   // Create
   void addTask(String title) {
-    tasks.add(Task(id: DateTime.now().toString(), title: title));
+    tasks.add(
+      Task(
+        id: DateTime.now().toString(),
+        title: title,
+        status: JobStatus.todo,
+      ),
+    );
   }
 
   // Read (Handled automatically by the observable list)
@@ -30,7 +36,7 @@ class HomeController extends GetxController {
   // Update
   void toggleTaskStatus(int index) {
     var task = tasks[index];
-    task.isCompleted = !task.isCompleted;
+    // task.isCompleted = !task.isCompleted;
     tasks[index] = task; // Trigger update
   }
 

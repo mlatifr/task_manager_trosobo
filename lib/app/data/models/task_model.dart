@@ -1,7 +1,17 @@
 class Task {
   String id;
   String title;
-  bool isCompleted;
+  String? description;
+  JobStatus status;
+  DateTime? dueDate;
 
-  Task({required this.id, required this.title, this.isCompleted = false});
+  Task({
+    required this.id,
+    required this.title,
+    this.description,
+    this.dueDate,
+    required this.status,
+  });
 }
+
+enum JobStatus { todo, inProgress, done }
